@@ -13,6 +13,7 @@
                             </div>
                             <div>
                                 <el-input v-model.trim="specItem.attr" ref="specValueInput"
+                                    style="width:500px"
                                     @focus="attrFocus(specItem.attr)" @blur="attrBlur(specItem.attr)"></el-input>
                             </div>
                         </div>
@@ -21,20 +22,21 @@
                                 规格值：
                             </div>
                             <div>
-                                <div 
+                                <span 
                                     v-for="(valueItem,valueItemIndex) in specItem.valueList"
                                     :key="valueItemIndex">
                                     <el-input v-model.trim="specItem.valueList[valueItemIndex].title"
                                         ref="attrValueInput"
-                                        width="50%"
+                                        style="width:250px;margin:10px 0"
                                         @focus="attrValueFocus(specItem.valueList[valueItemIndex].title)"
                                         @blur="newAttrValueBlur(specItem.attr, specItem.valueList[valueItemIndex].title,specItemIndex,valueItemIndex)">
                                     </el-input>
                                     <div class="el-icon-delete"
+                                        style="margin:0 20px"
                                         v-if="specItem.valueList.length > 0"
                                         @click="removeSpecValue(specItemIndex,valueItemIndex, specItem.attr, specItem.valueList[valueItemIndex].title)">
                                     </div>
-                                </div>
+                                </span>
                                 <div>
                                     <el-button @click="addSpecValue(specItemIndex)"
                                         icon="el-icon-plus"
